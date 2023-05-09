@@ -20,6 +20,7 @@ main{
     
     
     width: 80vw;
+    
 }
 .container-player{
    text-align: center;
@@ -29,6 +30,8 @@ main{
    border-radius: 10px;
    padding: 10px;
    box-shadow: 0px 0px 10px 0px #00000010;
+   transition: 1s ease;
+   opacity: 0.3;
 }
 .container-player h2{
     line-height: 20px;
@@ -37,8 +40,8 @@ main{
     font-size: 40px;
 }
 
-.container-player-x-turn{
-    opacity: 0.3;
+.select-turn{
+    opacity: 1;
 }
 
 
@@ -94,9 +97,10 @@ margin: 50px;
     background-color: #434343;
 }
 
-.timer{
+.container-timer{
     background-color: #fff;
    padding: 10px;
+   
     display: flex;
     justify-content: center;
     align-items: center;
@@ -104,7 +108,7 @@ margin: 50px;
     width: 100px;
     box-shadow: 0px 0px 10px 0px #0000005d;
 }
-.timer p {
+.timer{
     line-height: 10px;
     color: #303030;
 }
@@ -158,4 +162,23 @@ margin: 50px;
     display: block;
 }
 
+.modal-win{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  padding: 50px;
+    background-color: yellow;
+}
 
+.container-modal{
+    
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: #39393965;
+}

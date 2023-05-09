@@ -12,15 +12,23 @@
     <title>Document</title>
 </head>
 <body>
+  <div class="container-modal">
+    <div class="modal-win">
+      <h2 class="info-winner">Ha ganado el jugador X</h2>
+      <button class="btn-resetGame">Reset</button>
+    </div>
+  </div>
     <h1>TIC TAC TOE</h1>
     <p>Por Goaking</p>
 <main>
 
 
-    <div class=" container-player container-player-x-turn ">
+    <div class=" container-player container-player-x-turn select-turn">
       <h2>Player turn</h2>
       <p class="X">X</p>
     </div>
+
+   
 
     <table  >
        
@@ -49,22 +57,13 @@
           <p class="O">O</p>
         </div>
       </main>
-      <div class="timer">
-        <p>28:</p><p>25</p>
+      <div class="container-timer">
+        <p class="timer">0:0</p>
       </div>
       <div class="container-last-10-win">
         <h2>Last 10 win</h2>
         <div class="last-10-win">
-          <p class="X">X</p>
-          <p class="O">O</p>
-          <p class="X">X</p>
-          <p>X</p>
-          <p>X</p>
-          <p class="O">O</p>
-          <p>X</p>
-          <p class="O">O</p>
-          <p class="O">O</p>
-          <p >X</p>
+         
         </div>
       </div>
 </body>
