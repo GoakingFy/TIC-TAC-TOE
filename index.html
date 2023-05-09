@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Darumadrop+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="main.js" defer ></script>
     <title>Document</title>
@@ -11,6 +14,13 @@
 <body>
     <h1>TIC TAC TOE</h1>
     <p>Por Goaking</p>
+<main>
+
+
+    <div class=" container-player container-player-x-turn ">
+      <h2>Player turn</h2>
+      <p class="X">X</p>
+    </div>
 
     <table  >
        
@@ -33,5 +43,29 @@
           </tr>
       
         </table>
+
+        <div class=" container-player container-player-o-turn ">
+          <h2>Player turn</h2>
+          <p class="O">O</p>
+        </div>
+      </main>
+      <div class="timer">
+        <p>28:</p><p>25</p>
+      </div>
+      <div class="container-last-10-win">
+        <h2>Last 10 win</h2>
+        <div class="last-10-win">
+          <p class="X">X</p>
+          <p class="O">O</p>
+          <p class="X">X</p>
+          <p>X</p>
+          <p>X</p>
+          <p class="O">O</p>
+          <p>X</p>
+          <p class="O">O</p>
+          <p class="O">O</p>
+          <p >X</p>
+        </div>
+      </div>
 </body>
 </html>

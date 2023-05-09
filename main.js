@@ -32,7 +32,7 @@ cells.forEach(cell => {
             
             let cell_content = e.target;
             let cell_id = cell_content.getAttribute("data-cell")
-
+            cell.classList.toggle(current_player);
             cell_content.innerHTML = current_player;
             TABLE[cell_id - 1] = current_player;
            

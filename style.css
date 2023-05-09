@@ -2,6 +2,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: 'Darumadrop One', cursive;
 }
 body{
     height: 100vh;
@@ -11,12 +12,63 @@ display: flex;
     justify-content: center;
     flex-direction: column;
 }
+main{
+    display: flex;
+    
+    justify-content: space-around;
+    align-items: center;
+    
+    
+    width: 80vw;
+}
+.container-player{
+   text-align: center;
+   background-color: #434343;
+   width: 100px;
+   height: auto;
+   border-radius: 10px;
+   padding: 10px;
+   box-shadow: 0px 0px 10px 0px #00000010;
+}
+.container-player h2{
+    line-height: 20px;
+}
+.container-player p {
+    font-size: 40px;
+}
+
+.container-player-x-turn{
+    opacity: 0.3;
+}
+
+
+.container-player-x-turn h2{
+color: #fff;
+}
+
+
+.container-player-o-turn h2{
+    color: yellow;
+    }
+h1{
+    color: #fff;
+}
+p{
+    color: yellow;
+}
 table{
 
 border-spacing: 0;
 overflow: hidden;
 margin: 50px;
 
+}
+.X {
+    color: yellow;
+}
+
+.O{
+   color: #fff; 
 }
 
 .row-table{
@@ -34,11 +86,76 @@ margin: 50px;
     width: 100px;
     height: 100px;
     font-size: 40px;
-    color: yellow;
-    transition: .3s ease ;
+    
+    transition: background .3s ease ;
 }
 
 .cell:hover{
     background-color: #434343;
 }
+
+.timer{
+    background-color: #fff;
+   padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    width: 100px;
+    box-shadow: 0px 0px 10px 0px #0000005d;
+}
+.timer p {
+    line-height: 10px;
+    color: #303030;
+}
+.container-last-10-win{
+    width: 600px;
+    height: 50px;
+   font-size: 12px;
+    margin: 40px;
+    display: flex;
+    align-items: center;
+    
+}
+.container-last-10-win h2{
+    width: 90px;
+    text-align: center;
+    color: #fff;
+    margin-right: 20px;
+}
+
+.last-10-win{
+    width: 65%;
+    height: 50px;
+    background-color: #434343;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding-top: 0px;
+    padding-bottom: 5px;
+    font-size: 30px;
+    position: relative;
+    cursor: crosshair;
+}
+
+.last-10-win p::before{
+    content: '10:10';
+    top: -35px;
+  border-radius: 10px;
+    text-align: center;
+    color: #303030;
+    font-size: 15px;
+    position: absolute;
+    width: 50px;
+    height: auto;
+    padding-bottom: 5px;
+    background-color: #fff;
+    display: none;
+}
+
+.last-10-win p:hover::before{
+    display: block;
+}
+
 
