@@ -16,9 +16,17 @@ const PLAYERS = {
     O:"O"
 }
 
-let historyWin = []
+!JSON.parse(localStorage.getItem("recordLastWin")) ? localStorage.setItem("recordLastWin" , JSON.stringify([])) : null;
 
-console.log(historyWin)
+let recordLocalStorage = JSON.parse(localStorage.getItem("recordLastWin"))
+
+
+
+
+loadHistoryWinner(recordLocalStorage)
+
+
+
 
 let TABLE = ["","","","","","","","",""]
 const COMB_WIN = [ 
@@ -38,7 +46,8 @@ const COMB_WIN = [
 const INITIAL_PLAYER = PLAYERS.X;
 let current_player = INITIAL_PLAYER;
 
-timerGame()
+setInterval(timerGame , 1000)
+
 
 cells.forEach(cell => {
     
@@ -57,7 +66,6 @@ cells.forEach(cell => {
             cell_content.innerHTML = TABLE[cell_id - 1];
             cell.classList.toggle(TABLE[cell_id - 1]);
            
-            console.log(TABLE)
             change_player(PLAYERS)
             setWinner(COMB_WIN)
 
@@ -77,9 +85,9 @@ function setWinner(COMB_WIN){
       
        if(TABLE[COMB_WIN[i][0]] == "X" && TABLE[COMB_WIN[i][1]] == "X" && TABLE[COMB_WIN[i][2]] == "X"){
            winner = PLAYERS.X
-           console.log("Ha ganado X")
+          
            displayModal(winner)
-           addHistoryWinner()
+           addHistoryWinner(recordLocalStorage)
            
 
            
@@ -87,9 +95,9 @@ function setWinner(COMB_WIN){
        
        if(TABLE[COMB_WIN[i][0]] == "O" && TABLE[COMB_WIN[i][1]] == "O" && TABLE[COMB_WIN[i][2]] == "O"){
            winner = PLAYERS.O
-           console.log("Ha ganado O")
+          
            displayModal(winner)
-           addHistoryWinner()
+           addHistoryWinner(recordLocalStorage)
        }
 
    
@@ -105,19 +113,21 @@ function setWinner(COMB_WIN){
 btnReset.addEventListener("click" , ()=>{
     modal.style.display = "none"
     resetGame()
+  
 })
 
 function resetGame(){
     
     cells.forEach((cell)=>{
         let cell_id = cell.getAttribute("data-cell")
-        console.log(cell_id)
+        
         cell.innerHTML = ''
         if(TABLE[cell_id -1]!= ""){
             cell.classList.remove(TABLE[cell_id -1] );
         }
        
     })
+
     TABLE = ["","","","","","","","",""]
     current_player = INITIAL_PLAYER;
     
@@ -126,8 +136,8 @@ function resetGame(){
     o_turn.classList.remove('select-turn')
     min = 0
     seg = 0
-    console.log(historyWin)
-    loadHistoryWinner(historyWin)
+    
+    loadHistoryWinner(recordLocalStorage)
 
 }
 
@@ -145,40 +155,45 @@ function timerGame() {
    
     
       
-        setInterval(()=>{
-          seg++
-
-            if(seg == 60){
-            seg = 0
-            min++
-          }
-          
-          timer.innerHTML = `${min}:${seg}`
-          
+    
         
-        
-        },1000)
+        seg++;
+      
+ 
+        const min = Math.floor(seg / 60);
+        const segundosRestantes = seg % 60;
+      
+      
+        const cadena = `${min.toString().padStart(2, '0')}:${segundosRestantes.toString().padStart(2, '0')}`;
+      
        
+        timer.textContent = cadena;
+      
 
 }
 
-function addHistoryWinner(){
+function addHistoryWinner(arrRecord){
     let infoGame = {
         winner,
         time: timer.innerHTML
     }
 
-    historyWin.push(infoGame)
+    arrRecord.push(infoGame)
+    localStorage.setItem("recordLastWin" , JSON.stringify(arrRecord));
 }
 
 function loadHistoryWinner(arr){
     last10W.innerHTML = ``
-    arr.forEach( record =>{
-        console.log(record.winner)
-        let newElement =  document.createElement("p")
-        newElement.textContent = record.winner
-        newElement.classList.add(record.winner)
-        last10W.appendChild(newElement)
-    } )
+    if(arr != null){
+        arr.forEach( record =>{
+           
+            let newElement =  document.createElement("p")
+            newElement.textContent = record.winner
+            newElement.classList.add(record.winner)
+            newElement.setAttribute('time' , record.time)
+            last10W.appendChild(newElement)
+        } )
+    }
+   
 }
 

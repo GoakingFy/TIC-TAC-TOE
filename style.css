@@ -144,7 +144,7 @@ margin: 50px;
 }
 
 .last-10-win p::before{
-    content: '10:10';
+    content: attr(time);
     top: -35px;
   border-radius: 10px;
     text-align: center;
