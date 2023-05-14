@@ -20,12 +20,7 @@ const PLAYERS = {
 
 let recordLocalStorage = JSON.parse(localStorage.getItem("recordLastWin"))
 
-
-
-
-loadHistoryWinner(recordLocalStorage)
-
-
+loadRecordWinner(recordLocalStorage)
 
 
 let TABLE = ["","","","","","","","",""]
@@ -47,7 +42,6 @@ const INITIAL_PLAYER = PLAYERS.X;
 let current_player = INITIAL_PLAYER;
 
 setInterval(timerGame , 1000)
-
 
 cells.forEach(cell => {
     
@@ -87,9 +81,8 @@ function setWinner(COMB_WIN){
            winner = PLAYERS.X
           
            displayModal(winner)
-           addHistoryWinner(recordLocalStorage)
-           
-
+           addRecordWinner(recordLocalStorage)
+        
            
        } 
        
@@ -97,16 +90,18 @@ function setWinner(COMB_WIN){
            winner = PLAYERS.O
           
            displayModal(winner)
-           addHistoryWinner(recordLocalStorage)
+           addRecordWinner(recordLocalStorage)
        }
-
-   
         
     }
 
-    !TABLE.includes("") ? winner = "tie" : null
-    
+    if(!TABLE.includes("")){
+        winner = "tie"
+        displayModal(winner)
+    }
 
+     
+    
     
 }
 
@@ -137,42 +132,29 @@ function resetGame(){
     min = 0
     seg = 0
     
-    loadHistoryWinner(recordLocalStorage)
+    loadRecordWinner(recordLocalStorage)
 
 }
 
 
 function displayModal(winner){
     const infoWinner = document.querySelector(".info-winner")
-    infoWinner.innerHTML = `Ha ganado el jugador ${winner}`
+    winner != "tie" ? infoWinner.innerHTML = `Ha ganado el jugador ${winner}` : infoWinner.innerHTML = `Ningún jugador ha ganado` 
 
-  modal.style.display = "flex"  
+    modal.style.display = "flex"  
     
 
 }
 
 function timerGame() {
-   
-    
-      
-    
-        
         seg++;
-      
- 
         const min = Math.floor(seg / 60);
         const segundosRestantes = seg % 60;
-      
-      
         const cadena = `${min.toString().padStart(2, '0')}:${segundosRestantes.toString().padStart(2, '0')}`;
-      
-       
         timer.textContent = cadena;
-      
-
 }
 
-function addHistoryWinner(arrRecord){
+function addRecordWinner(arrRecord){
     let infoGame = {
         winner,
         time: timer.innerHTML
@@ -182,7 +164,7 @@ function addHistoryWinner(arrRecord){
     localStorage.setItem("recordLastWin" , JSON.stringify(arrRecord));
 }
 
-function loadHistoryWinner(arr){
+function loadRecordWinner(arr){
     last10W.innerHTML = ``
     if(arr != null){
         arr.forEach( record =>{

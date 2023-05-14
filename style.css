@@ -182,3 +182,17 @@ margin: 50px;
     align-items: center;
     background-color: #39393965;
 }
+
+
+@media screen and (max-width: 1024px) {
+   
+    .container-player{
+        display: none;
+    }
+    .container-timer{
+        display: none;
+    }
+    .container-last-10-win{
+        display: none;
+    }
+}
